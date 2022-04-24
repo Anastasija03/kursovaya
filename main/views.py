@@ -1,6 +1,24 @@
+from os import access
 from django.shortcuts import redirect, render
 from django.views.generic import View
 from .models import *
+
+from rest_framework import views
+from rest_framework.response import Response
+
+
+class APICreateUserForm(views.APIView):
+    def post(self, request):
+        newUser = UserForm.objects.create(
+            name=request.data['name'],
+            surname=request.data['surname'],
+            years=request.data['years'],
+            email=request.data['email'],
+            country=request.data['country'],
+        )
+
+        return Response({}, status=200)
+
 
 
 class Index(View):

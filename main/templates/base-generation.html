@@ -15,7 +15,7 @@
 
     <div class="sidebar">
         <a {% if request.path == '/' %} class="active" {% endif %} href="{% url 'index' %}">Главная</a>
-        <a {% if 'quiz' in request.path %} class="active" {% endif %} href="{% url 'quiz_list' %}">Анкеты</a>
+        <a {% if 'quiz' in request.path %} class="active" {% endif %} href="{% url 'quiz_list' %}">Опросы</a>
         <a {% if '/form/' in request.path %} class="active" {% endif %} href="{% url 'form' %}">Форма</a>
         <a {% if 'propose' in request.path %} class="active" {% endif %} href="{% url 'propose' %}">Предложить опрос</a>
     </div>
