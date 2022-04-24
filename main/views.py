@@ -36,6 +36,26 @@ class FormPage(View):
 
     def post(self, request):
 
-        
+        newUser = UserForm.objects.create(
+            name=request.POST['name'],
+            surname=request.POST['surname'],
+            years=request.POST['years'],
+            email=request.POST['email'],
+            country=request.POST['country'],
+        )
+        return redirect("index")
+
+
+class ProposePage(View):
+    def get(self, request):
+        return render(request, 'propose.html')
+
+    def post(self, request):
+
+        newPropose = ProposeForm.objects.create(
+            title=request.POST['title'],
+            topic=request.POST['topic'],
+            description=request.POST['description']
+        )
 
         return redirect("index")

@@ -40,3 +40,12 @@ class UserForm(models.Model):
 
     def __str__(self):
         return self.name + " " + self.surname
+
+
+class ProposeForm(models.Model):
+    title = models.CharField(max_length=100)
+    topic = models.CharField(max_length=100)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
