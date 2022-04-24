@@ -10,5 +10,6 @@ urlpatterns = [
     path('quiz/<pk>/<quest>', views.QuizPage.as_view(), name="quiz"),
     path('form/', views.FormPage.as_view(), name="form"),
     path('propose/', views.ProposePage.as_view(), name="propose"),
-    path('api/createform', views.APICreateUserForm.as_view(), name="api_createform")
+    path('api/createform', views.APICreateUserForm.as_view(), name="api_createform"),
+    path('api/getuserforms', views.APIGetUserForms.as_view(), name="api_getuserforms")
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

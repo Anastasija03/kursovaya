@@ -1,10 +1,24 @@
-from os import access
+from os import access, name
 from django.shortcuts import redirect, render
 from django.views.generic import View
 from .models import *
 
 from rest_framework import views
 from rest_framework.response import Response
+from rest_framework import generics
+from rest_framework import serializers
+
+
+""" API для ПД """
+
+####################################################
+
+class UserFormSerializer(serializers.Serializer):
+    name = serializers.CharField()
+    surname = serializers.CharField()
+    years = serializers.IntegerField()
+    email = serializers.EmailField()
+    country = serializers.CharField()
 
 
 class APICreateUserForm(views.APIView):
@@ -20,6 +34,11 @@ class APICreateUserForm(views.APIView):
         return Response({}, status=200)
 
 
+class APIGetUserForms(generics.ListAPIView):
+    queryset = UserForm.objects.all()
+    serializer_class = UserFormSerializer
+
+#######################################################
 
 class Index(View):
     def get(self, request):
